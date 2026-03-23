@@ -1,0 +1,330 @@
+/* Reset & Base */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+  color: #ccc;
+  font-family: 'Segoe UI', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+  font-size: 14px;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+#starChart {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+#ui-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#ui-overlay > * {
+  pointer-events: auto;
+}
+
+/* ===== Header ===== */
+#header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+}
+
+.app-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #e0d8c0;
+}
+
+.header-center {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  color: #aaa;
+}
+
+#btn-night-mode {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* ===== Side Panel ===== */
+#side-panel {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  width: 220px;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  border-left: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-radius: 0 0 0 8px;
+  transition: transform 0.3s ease;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+
+#side-panel.collapsed .side-panel-content {
+  display: none;
+}
+
+#side-panel-toggle {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  color: #ccc;
+  font-size: 18px;
+  padding: 8px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.side-panel-content {
+  padding: 12px;
+}
+
+.panel-section {
+  margin-bottom: 16px;
+}
+
+.panel-section h3 {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.toggle-label {
+  display: block;
+  padding: 4px 0;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.toggle-label input[type="checkbox"] {
+  margin-right: 6px;
+}
+
+select, input[type="number"] {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #ccc;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  width: 100%;
+  margin-bottom: 6px;
+}
+
+.btn {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #ccc;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  margin: 4px 0;
+  width: 100%;
+}
+
+.btn:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.manual-location {
+  margin-top: 8px;
+}
+
+.manual-location label {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.manual-location input[type="number"] {
+  width: 100%;
+}
+
+/* ===== Bottom Panel ===== */
+#bottom-panel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  padding: 8px 16px;
+}
+
+.time-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.time-controls button {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #ccc;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.time-controls button:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+#time-slider {
+  flex: 1;
+  min-width: 150px;
+  accent-color: #6688cc;
+}
+
+#datetime-input {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #ccc;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.speed-control {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+}
+
+.speed-control select {
+  width: auto;
+  margin: 0;
+}
+
+/* ===== Night Mode ===== */
+body.night-mode #header,
+body.night-mode #side-panel,
+body.night-mode #bottom-panel {
+  background: rgba(30, 0, 0, 0.85);
+  color: #a44;
+}
+
+body.night-mode .app-title {
+  color: #c66;
+}
+
+body.night-mode .header-center {
+  color: #833;
+}
+
+body.night-mode button,
+body.night-mode select,
+body.night-mode input {
+  color: #a44;
+  border-color: rgba(170, 68, 68, 0.3);
+}
+
+body.night-mode .panel-section h3 {
+  color: #833;
+}
+
+/* ===== Scrollbar ===== */
+#side-panel::-webkit-scrollbar {
+  width: 4px;
+}
+
+#side-panel::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.2);
+  border-radius: 2px;
+}
+
+/* ===== Responsive (Mobile) ===== */
+@media (max-width: 600px) {
+  #header {
+    padding: 6px 10px;
+  }
+
+  .app-title {
+    font-size: 14px;
+  }
+
+  .header-center {
+    font-size: 11px;
+    gap: 8px;
+  }
+
+  #side-panel {
+    width: 180px;
+    top: 44px;
+  }
+
+  .side-panel-content {
+    padding: 8px;
+  }
+
+  #bottom-panel {
+    padding: 6px 8px;
+  }
+
+  .time-controls {
+    gap: 4px;
+    font-size: 12px;
+  }
+
+  .time-controls button {
+    padding: 2px 6px;
+    font-size: 12px;
+    min-width: 36px;
+    min-height: 36px;
+  }
+
+  #datetime-input {
+    font-size: 11px;
+    padding: 2px 4px;
+  }
+
+  .speed-control {
+    font-size: 11px;
+  }
+
+  /* スマホ縦画面ではスライダーを独立行に */
+  #time-slider {
+    order: 10;
+    width: 100%;
+    flex-basis: 100%;
+    min-width: 0;
+  }
+}

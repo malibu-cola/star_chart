@@ -1,0 +1,20 @@
+{
+  "name": "star-chart",
+  "version": "1.0.0",
+  "description": "星座早見盤 Web アプリケーション - Star Chart Web Application",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": ["astronomy", "star-chart", "planisphere"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^8.0.1"
+  },
+  "dependencies": {
+    "d3": "^7.9.0"
+  }
+}
