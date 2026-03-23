@@ -74,12 +74,13 @@ export class App {
   }
 
   async loadData() {
+    const base = import.meta.env.BASE_URL;
     const [stars, lines, names, mw, messier] = await Promise.all([
-      fetch('/data/stars.json').then(r => r.json()),
-      fetch('/data/constellations.lines.json').then(r => r.json()),
-      fetch('/data/constellations.names.json').then(r => r.json()),
-      fetch('/data/mw.json').then(r => r.json()),
-      fetch('/data/messier.json').then(r => r.json()),
+      fetch(`${base}data/stars.json`).then(r => r.json()),
+      fetch(`${base}data/constellations.lines.json`).then(r => r.json()),
+      fetch(`${base}data/constellations.names.json`).then(r => r.json()),
+      fetch(`${base}data/mw.json`).then(r => r.json()),
+      fetch(`${base}data/messier.json`).then(r => r.json()),
     ]);
 
     this.stars = stars;
